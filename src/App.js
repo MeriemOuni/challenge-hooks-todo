@@ -9,8 +9,8 @@ function App() {
     // setList(list.concat(item));
     setList([item, ...list]);
   };
-  const deleteItem = (id) => {
-    setList(list.filter((_, el) => el !== id));
+  const deleteItem = (indice) => {
+    setList(list.filter((el, i) => i !== indice))
   };
 
   return (
