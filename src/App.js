@@ -1,24 +1,26 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import Add from "./TodoApp/Add";
+import ListItems from "./TodoApp/ListItems";
 import './App.css';
 
 function App() {
+  const [list, setList] = useState(["item1", "item2"]);
+  const addItem = (item) => {
+    // setList(list.concat(item));
+    setList([item, ...list]);
+  };
+  const deleteItem = (id) => {
+    setList(list.filter((_, el) => el !== id));
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Add addItem={addItem} />
+      <ListItems list={list} deleteItem={deleteItem} />
     </div>
+    </div>
+
   );
 }
 
